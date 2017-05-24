@@ -29,7 +29,7 @@
 var respo = {
   "resultcode":1,
   "msg":"success"
-}
+};
       res.json(respo);
     });
 

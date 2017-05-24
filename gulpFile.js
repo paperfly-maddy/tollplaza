@@ -33,6 +33,11 @@
       .pipe(jshint.reporter('default'));
     watch(_paths, livereload.changed);
   });
+/*
+  gulp.task('watch', function () {
+    watch([ 'server/*.js' ]); // Run 'lint' task for those files
+  });
+*/
 
   //lint js files
   gulp.task('lint', function() {

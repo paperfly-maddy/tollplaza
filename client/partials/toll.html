@@ -4,7 +4,7 @@
                   <div class="form-group">
                       <label for="tollplaza" class="col-sm-3 control-label">Select Plaza State</label>
                       <div class="col-sm-6">
-                          <select id="tollplaza" class="form-control"  />
+                          <select id="tollplaza" class="form-control" data-ng-model="state" />
                               <option value="MH" selected="selected">Maharashtra</option>
                               <option value="KA">Karnataka</option>
                           </select>
@@ -13,13 +13,77 @@
 
                   <div class="form-group">
                       <div class="col-sm-6 col-sm-offset-3">
-                          <button type="submit" class="btn btn-primary btn-block" >Get Toll Detailed Report</button>
+                          <button type="submit" class="btn btn-primary btn-block" data-ng-click="List()" >Get Toll Detailed Report</button>
                       </div>
                   </div>
 
               </form> <!-- /form -->
+
+              <h2>Toll Collection Summery Table</h2>
+              <p>This table shows the toll amounts collected by the toll plaza in the selected toll plaza state</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Toll Plaza Center</th>
+                    <th>Total Vehicles passed</th>
+                    <th>No of Government vehicles</th>
+                    <th>No of states vehicles</th>
+                    <th>Total Toll Collected</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  >
+                    <td>{{state}}</td>
+                    <td>{{total}}</td>
+                    <td>{{gVehicles}}</td>
+                    <td>{{sVehicles}}</td>
+                    <td>{{totalToll}}</td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+              <p>This table shows count of different types of vehicles</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>2 Wheeler</th>
+                    <th>3 Wheeler</th>
+                    <th>4 Wheerler</th>
+                    <th>6 Wheerler</th>
+                    <th>Multi Axel</th>
+                    <th>Transport Vehicles </th>
+                    <th>Non Transport Vehicles </th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  >
+                    <td>{{wheeler2}}</td>
+                    <td>{{wheeler3}}</td>
+                    <td>{{wheeler4}}</td>
+                    <td>{{wheeler6}}</td>
+                    <td>{{multiAxle}}</td>
+                    <td>{{trans}}</td>
+                    <td>{{nonTrans}}</td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+
+
+
+
   <h2>Toll Collection Table</h2>
-  <p>This table shows the toll amounts to be paid by the vehicles to the selected Toll Plaza center</p>
+  <p>This table shows the toll amounts  paid by the vehicles to the selected Toll Plaza center</p>
   <table class="table">
     <thead>
       <tr>

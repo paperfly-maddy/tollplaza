@@ -1,5 +1,5 @@
 <div class="container" ng-controller="homeCtrl">
-            <form class="form-horizontal" role="form">
+            <form name="tollplaza" class="form-horizontal" role="form">
                 <h2>Vehicle Registration Card</h2>
                 <h3 ng-if="addFlag">Added Successfully! </h3>
 
@@ -15,30 +15,34 @@
                 <div class="form-group">
                     <label for="vehicleNo" class="col-sm-3 control-label">Vehicle No</label>
                     <div class="col-sm-6">
-                        <input type="text" id="vehicleNo" placeholder="Enter Vehicle Registration No" class="form-control" autofocus data-ng-model="vehiclesDetails.vehicleNo"/>
+                        <input type="text" name="vehicleNo" id="vehicleNo" placeholder="Enter Vehicle Registration No" class="form-control" autofocus data-ng-model="vehiclesDetails.vehicleNo" required/>
                         <span class="help-block">eg.: MH01AB1234, KA01AB1234</span>
+                        <span style="color:red;" ng-if="!tollplaza.vehicleNo.$valid && tollplaza.vehicleNo.$touched ">Vehicle No can not be empty</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="wheelsCount" class="col-sm-3 control-label">No of Wheels</label>
                     <div class="col-sm-6">
-                        <input type="text" id="wheelscount" placeholder="WheelsCount" class="form-control" data-ng-model="vehiclesDetails.wheelsCount" />
+                        <input type="text" required id="wheelscount"  name="wheelsCount" placeholder="WheelsCount" class="form-control" data-ng-model="vehiclesDetails.wheelsCount" />
+                        <span style="color:red;" ng-if="tollplaza.wheelsCount.$touched && vehiclesDetails.wheelsCount<2">Wheels counts can not be empty or less than 2</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="axleCount" class="col-sm-3 control-label" >No of Axles</label>
                     <div class="col-sm-6">
-                        <input type="text" id="axleCount" placeholder="AxleCount" class="form-control" data-ng-model="vehiclesDetails.axleCount" />
+                        <input type="text" id="axleCount" name="axleCount" required placeholder="AxleCount" class="form-control" data-ng-model="vehiclesDetails.axleCount" />
+                        <span style="color:red;" ng-if="tollplaza.wheelsCount.$touched && vehiclesDetails.wheelsCount>6 && vehiclesDetails.axleCount<3">Axle count can not be empty & less than 3 for more than 6 wheels</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="transportType" class="col-sm-3 control-label">Transport Type</label>
                     <div class="col-sm-6">
-                        <select id="transportType" class="form-control" data-ng-model="vehiclesDetails.transportType" />
+                        <select name="transportType" id="transportType"   class="form-control" data-ng-model="vehiclesDetails.transportType" />
                             <option selected="selected">Transport</option>
                             <option>NonTransport</option>
                         </select>
+                      <!--  <span style="color:red;" ng-if="!tollplaza.transportType.$pristine  ">Please select transport type</span> -->
                     </div>
                 </div> <!-- /.form-group -->
                 <div class="form-group">
@@ -63,7 +67,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-6 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" data-ng-click="calculateToll()">Calculate Toll</button>
+                        <button type="submit" class="btn btn-primary btn-block" data-ng-click="calculateToll()" ng-disabled="tollplaza.$invalid">Calculate Toll</button>
                     </div>
                 </div>
                 </div>
