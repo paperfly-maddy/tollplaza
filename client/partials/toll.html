@@ -1,0 +1,48 @@
+<div class="container" ng-controller="tollCtrl">
+  <h1> Detail Toll Plaza Report </h1>
+  <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                      <label for="tollplaza" class="col-sm-3 control-label">Select Plaza State</label>
+                      <div class="col-sm-6">
+                          <select id="tollplaza" class="form-control"  />
+                              <option value="MH" selected="selected">Maharashtra</option>
+                              <option value="KA">Karnataka</option>
+                          </select>
+                      </div>
+                  </div> <!-- /.form-group -->
+
+                  <div class="form-group">
+                      <div class="col-sm-6 col-sm-offset-3">
+                          <button type="submit" class="btn btn-primary btn-block" >Get Toll Detailed Report</button>
+                      </div>
+                  </div>
+
+              </form> <!-- /form -->
+  <h2>Toll Collection Table</h2>
+  <p>This table shows the toll amounts to be paid by the vehicles to the selected Toll Plaza center</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vehicle No</th>
+        <th>Type</th>
+        <th>No of Wheels</th>
+        <th>No of Axles</th>
+        <th>Government Vehicle</th>
+        <th>Toll to Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  data-ng-repeat="vehicle in vehiclesList">
+        <td>{{vehicle.vehicleNo}}</td>
+        <td>{{vehicle.type}}</td>
+        <td>{{vehicle.wheelsCount}}</td>
+        <td>{{vehicle.axleCount}}</td>
+        <td>{{vehicle.governmentVehicle}}</td>
+        <td>{{vehicle.toll}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
